@@ -1,9 +1,6 @@
-import React, { Component } from 'react'
-class ProductRow extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  }
-    }
+import React, { PureComponent } from 'react'
+
+class ProductRow extends PureComponent  {
     render() { 
         const product = this.props.product;
         const name = product.stocked ? product.name : 

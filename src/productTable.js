@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import ProductRow from './productRow';
 
-class ProductTable extends Component {
+class ProductTable extends PureComponent {
     render() {
         const filterText = this.props.filterText;
         const inStockOnly = this.props.inStockOnly;

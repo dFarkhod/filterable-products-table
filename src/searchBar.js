@@ -1,9 +1,5 @@
-import React, { Component } from 'react'
-class SearchBar extends Component {
-    constructor(props) {
-      super(props);
-    }
-    
+import React, { PureComponent } from 'react'
+class SearchBar extends PureComponent {
     handleFilterTextChange = (e) => {
       this.props.onFilterTextChange(e.target.value);
     }
@@ -27,7 +23,7 @@ class SearchBar extends Component {
               id="onlyInStock" 
               name="onlyInStock"
               onChange={this.handleInStockChange} />
-              <label for="onlyInStock">Faqat omborda mavjud bo'lgan maxsulotlar</label>
+              <label htmlFor="onlyInStock">Faqat omborda mavjud bo'lgan maxsulotlar</label>
           </p>
         </div>
       );
