@@ -1,8 +1,8 @@
 import { PureComponent } from 'react'
-import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import About from './about';
 import Home from './home';
 import Products from './products';
-import About from './about';
 
 class App extends PureComponent {
     render() {
@@ -27,7 +27,7 @@ class App extends PureComponent {
                     </Switch>
                 </div>
             </BrowserRouter>
-        );
+        )
     }
 
 
