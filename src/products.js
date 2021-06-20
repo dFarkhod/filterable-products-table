@@ -1,37 +1,31 @@
-import React, { PureComponent } from 'react'
+import React, { useState, useEffect } from 'react'
 import FilterableProductTable from './filterableProductTable';
 const API_URL = 'http://www.amock.io/api/vd/products';
 
-class Products extends PureComponent {
-    constructor(props) {
-        super(props);
+function Products() {
+    const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-        this.state = {
-            products: [],
-            isLoading: true,
-        };
-    }
-
-    render() { 
-        if (this.state.isLoading) {
-            return <p>Iltimos, sabr qiling. Ma'lumot yuklanyapti...</p>;
-        }
-        else {
-            return (<FilterableProductTable products={this.state.products} />);
-        }
-    }
-
-    componentDidMount() {
+    useEffect(() => {
         fetch(API_URL)
             .then(response => response.json())
             .then(data => {
                 let jsonData = eval('(' + data + ')'); // eslint-disable-line
-                this.setState({ products: jsonData, isLoading: false });
+                setProducts(jsonData);
+                setIsLoading(false);
             })
             .catch(error => {
-                this.setState({ error, isLoading: false })
+                console.log(error);
+                setIsLoading(false);
             });
+    }, [])
+
+    if (isLoading) {
+        return <p>Iltimos, sabr qiling. Ma'lumot yuklanyapti...</p>;
+    }
+    else {
+        return (<FilterableProductTable products={products} />);
     }
 }
- 
+
 export default Products;

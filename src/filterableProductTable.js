@@ -1,33 +1,25 @@
-import React, { PureComponent } from 'react'
 import SearchBar from './searchBar';
 import ProductTable from './productTable';
+import { useState } from 'react';
 
-class FilterableProductTable extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = { filterText: "", inStockOnly: false }
-    }
+function FilterableProductTable(props) {
+    const [filterText, setFilterText] = useState("");
+    const [inStockOnly, setInStockOnly] = useState(false);
 
-    handleFilterTextChange = (filterText) => {
-        this.setState({
-            filterText: filterText
-        });
+    function handleFilterTextChange(input) {
+        setFilterText(input);
     }
 
-    handleInStockChange = (inStockOnly) => {
-        this.setState({
-            inStockOnly: inStockOnly
-        });
+    function handleInStockChange(input) {
+        setInStockOnly(input);
     }
-    
-    render() { 
-        return ( 
-            <div>
-                <SearchBar filterText={this.state.filterText} inStockOnly={this.state.inStockOnly} onFilterTextChange={this.handleFilterTextChange} onInStockChange = {this.handleInStockChange}/>
-                <ProductTable products={this.props.products} filterText={this.state.filterText} inStockOnly={this.state.inStockOnly}  />
-            </div>
-         );
-    }
+
+    return (
+        <div>
+            <SearchBar filterText={filterText} inStockOnly={inStockOnly} onFilterTextChange={(updatedFilterText) => handleFilterTextChange(updatedFilterText)} onInStockChange={(updatedInStockChange) => handleInStockChange(updatedInStockChange)} />
+            <ProductTable products={props.products} filterText={filterText} inStockOnly={inStockOnly} />
+        </div>
+    );
 }
- 
+
 export default FilterableProductTable;
