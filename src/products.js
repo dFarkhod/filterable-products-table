@@ -12,7 +12,7 @@ class Products extends PureComponent {
         };
     }
 
-    render() { 
+    render() {
         if (this.state.isLoading) {
             return <p>Iltimos, sabr qiling. Ma'lumot yuklanyapti...</p>;
         }
@@ -26,12 +26,12 @@ class Products extends PureComponent {
             .then(response => response.json())
             .then(data => {
                 let jsonData = eval('(' + data + ')'); // eslint-disable-line
-                this.setState({ products:  jsonData, isLoading: false });
+                this.setState({ products: jsonData, isLoading: false });
             })
             .catch(error => {
                 this.setState({ error, isLoading: false })
             });
     }
 }
- 
+
 export default Products;

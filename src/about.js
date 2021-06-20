@@ -1,16 +1,17 @@
 import React, { PureComponent } from 'react'
+
 class About extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {  }
     }
     render() { 
-        return (  
+        return ( 
             <div>
                 <h1>Biz haqimizda</h1>
             </div>
 
-        );
+         );
     }
 }
  
